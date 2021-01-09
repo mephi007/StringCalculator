@@ -34,4 +34,12 @@ public class StringCalculatorTest {
         assertEquals(sut.calculate("1,2,3,4,5,6,8,9"), 38);
     }
 
+    //Allow the Add method to handle new lines between numbers (instead of commas).
+
+    @Test
+    public void testNewLineAsDelimiter() {
+        StringCalculator sut = new StringCalculator();
+        assertEquals(sut.calculate("1\n2,3"), 6);
+    }
+
 }
