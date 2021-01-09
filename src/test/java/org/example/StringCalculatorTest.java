@@ -43,9 +43,23 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void supportForCustomDelimiter() {
+    public void testSupportForCustomDelimiter() {
         StringCalculator sut = new StringCalculator();
         assertEquals(10, sut.calculate(";\n1;2;3;4"));
     }
 
+
+    //Calling Add with a negative number will throw an exception “negatives not allowed” - and the negative that was passed.
+
+    @Test
+    public void testNegativeNumbers(){
+        StringCalculator sut = new StringCalculator();
+        try {
+            sut.calculate("-1;4");
+            fail("exception should have been thrown");
+        }
+        catch (IllegalArgumentException e) {
+            assertEquals("negatives not allowed -1", e.getMessage());
+        }
+    }
 }

@@ -9,7 +9,7 @@ public class StringCalculator {
             return 0;
         }
         char customDelimiter = getCustomDelimiter(text.split("\n")[0]);
-
+        List<String> negatives = new ArrayList<String>();
         String[] chuncks = (customDelimiter == ',') ?
                 text.split(",|\n") : text.split("\n|" + customDelimiter);
         int total = 0;
@@ -19,8 +19,15 @@ public class StringCalculator {
                 --skipFirstLines;
             } else {
                 int num = Integer.parseInt(item);
+                if (num < 0) {
+                    negatives.add(item);
+                }
                 total += num;
             }
+        }
+        if (!negatives.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "negatives not allowed " + String.join(",", negatives));
         }
         return total;
     }
