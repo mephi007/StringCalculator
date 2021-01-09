@@ -27,4 +27,11 @@ public class StringCalculatorTest {
         assertEquals(sut.calculate("22,55"), 77);
     }
 
+    //Allow the Add method to handle an unknown amount of numbers
+    @Test
+    public void testUnknownAmountOfNnumersAsInput() {
+        StringCalculator sut = new StringCalculator();
+        assertEquals(sut.calculate("1,2,3,4,5,6,8,9"), 38);
+    }
+
 }
